@@ -131,3 +131,218 @@ print(x)   // 6
 
 
 ///////////////////////////function and closure/////////////////////
+func greet(_ fName: String ,_ lName: String){
+    print ("hello \(fName) \(lName)")
+}
+greet("asmaa","eliwa")
+
+
+//tuple return
+func relation(_ a:Int ,_ b:Int)->(min:Int , max:Int , rel:String){
+    var min = 0
+    var max = 0
+    var rel = ""
+    if a > b {
+        min = b
+        max = a
+        rel = "f is gretter than s "
+    }else{
+        min = a
+        max = b
+        rel = "s is gretter than f "
+    }
+    return (min ,max , rel)
+}
+print(relation(2,3))
+
+
+//Nested functions
+
+func addOne(_ a:Int)->Int{
+    return a+1
+    
+}
+func nestedFunc(){
+    var c = 5
+    var b = addOne(c)
+    print(b)
+}
+nestedFunc()   //6
+
+//Functions are a first-class type. This means that a function can return another function as its value.
+func firstClass()->((Int) -> Int){
+    return addOne     // this will return a function
+}
+print(firstClass())   //function
+
+//A function can take another function as one of its arguments.
+func withCallBack (_ callBack: (Int)-> Int)-> Int{
+    var l = 9
+    return callBack(l)  //this will return the output of the function wich is integer
+}
+print(withCallBack(addOne))    //10
+
+
+///////////////////////////closures//////////////////////
+var numbers = [1,2,3,4]
+var mapNums = numbers.map({ (num: Int)-> Int in
+    var result = num + 1
+    if num % 2 != 0{
+       return 0
+    }else{
+        return result
+    }
+    
+})
+print(mapNums)    //return 0 for odd numbers
+let mappedNumbers = numbers.map({ number in 3 * number })   //  we could also do it like this
+let sortedNumbers = numbers.sorted(){$0 > $1}   //{ $0 > $1 }: This is a closure expression that specifies the sorting order. In this case, it's used to sort the numbers in descending order. Here's what this closure does:$0 and $1 are shorthand argument names for the two elements being compared during the sorting process.
+print(sortedNumbers)    ///[4, 3, 2, 1]
+
+
+//////////////////////////////class/////////////////////////////////
+class Shape{
+    var area : Int = 15
+    var color: String = "red"
+    var name:String
+   
+    func showArea(){
+        print(area)
+    }
+    func sayName(){
+        print(name)
+    }
+    deinit{  //Use deinit to create a deinitializer if you need to perform some cleanup before the object is deallocated.
+        print("\(name) is dellocated")
+    }
+    var notStoredPropaperty : Int{   //In addition to simple properties that are stored, properties can have a getter and a setter.
+        get{
+            return area*2
+        }
+        set{
+            area = newValue
+        }
+    }
+    var willdidset: String {
+        willSet{
+            print("new value is \(newValue)")
+        }
+        didSet{
+            print("old value is \(oldValue)")
+        }
+    }
+    init(_ name:String ,_ willdidset: String ){
+        self.name = name
+        self.willdidset = willdidset
+    }
+}
+var circle: Shape? = Shape("circle", "asmaa")
+circle?.showArea()     // 15
+circle?.color   //red
+circle?.name
+circle = nil   //to do this the class instance has to be optional
+
+class Rectangle: Shape{    //inhiratence
+    var size: Int
+    init(size: Int){
+        self.size = size
+        super.init("rectangle","willdidset")
+    }
+    override func sayName(){
+        print(size)
+        
+    }
+}
+
+var rec : Rectangle = Rectangle(size: 20)
+print(rec.sayName())
+print(rec.showArea())
+rec.notStoredPropaperty = 90    /// that will make the area = newValue = 90
+print(rec.showArea())
+print(rec.notStoredPropaperty)
+rec.willdidset = "asmaa Eliwa"
+
+
+//enumeration
+
+enum Days{
+    case monday
+    case tusday
+    case wednsday
+    case thursday
+    case friday
+    case sutrday
+    case sunday
+}
+var day: Days = .monday
+
+//struct
+struct color{
+    var name: String
+    func hexaValue(){
+        
+    }
+}
+var red = color(name: "red")
+red.hexaValue()
+
+
+///concerency
+//func willTakeTime(_ prin:Int)async-> Bool{
+//    var fetchData = 9
+//    return fetchData == prin
+//}
+//Task {
+////    await connectUser(to: "primary")
+//}
+//Use Task to call asynchronous functions from synchronous code, without waiting for them to return.
+//var  answer = await willTakeTime(4)
+
+
+//protocol
+//Classes, enumerations, and structures can all adopt protocols.
+protocol proto{
+    var description: String {get}
+    mutating func showdeta()     // must not have body
+        
+    }
+
+
+class Vehicl: proto{
+    var description = "hello"
+    func showdeta() {
+        print("hi")
+        
+    }
+}
+
+/////////////////////////extension////////////////////
+///Use extension to add functionality to an existing type, such as new methods and computed properties. You can use an extension to add protocol conformance to a type that’s declared elsewhere, or even to a type that you imported from a library or framework
+extension Int{
+    func prime(){
+//        if self/
+    }
+}
+
+///////////////////////error handling////////////////////////
+enum PrinterError: Error {
+    case outOfPaper
+    case noToner
+    case onFire
+}
+func send(job: Int, toPrinter printerName: String) throws -> String {
+    if printerName == "Never Has Toner" {
+        throw PrinterError.noToner
+    }
+    return "Job sent"
+}
+do {
+    let printerResponse = try send(job: 1040, toPrinter: "Bi Sheng")
+    print(printerResponse)
+} catch {
+    print(error)
+}
+let printerSuccess = try? send(job: 1884, toPrinter: "Mergenthaler")
+
+////////////////generic/////////////
+///Writing <T: Equatable> is the same as writing <T> ... where T: Equatable.
