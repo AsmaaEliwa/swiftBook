@@ -400,3 +400,52 @@ let convertedNumber = Int(possibleNumber)  // The type of convertedNumber is "op
 //Optional binding can be used with if, guard, and while statements to check for a value inside an optional
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Basic Operators///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//asign operator
+let (z, y) = (1, 2)   //tuple type
+// z is equal to 1, and y is equal to 2
+
+//unary minus operator
+let three = 3
+let minusThree = -three       // minusThree equals -3
+let plusThree = -minusThree   // plusThree equals 3, or "minus minus three"
+
+//unary plus operator  // The unary plus operator (+) simply returns the value it operates on, without any change:
+let minusSix = -6
+let alsoMinusSix = +minusSix  // alsoMinusSix equals -6
+
+//compound assignment operators
+var r = 1
+r+=1
+
+
+//Swift also provides two identity operators (=== and !==), which you use to test whether two object references both refer to the same object instance.
+
+// tuple comarison
+(1, "zebra") < (2, "apple")   // true because 1 is less than 2; "zebra" and "apple" aren't compared
+(3, "apple") < (3, "bird")    // true because 3 is equal to 3, and "apple" is less than "bird"
+(4, "dog") == (4, "dog")      // true because 4 is equal to 4, and "dog" is equal to "dog"
+
+//ternary conditional operator
+var salary = 50
+var hasTax = true
+let fullSalary = salary + ( hasTax ? 10 : 0)
+
+//one-sided range      -------------------------------------------<
+
+let array1 = [1,2,3,4,5,6,7]
+for i in [2...]{
+    print(array1[i])
+}
+
+for i in [...2]{
+    print(array1[i])
+}
+for n in array1[..<2] {
+    print(n)
+}
+
+let range = ...5
+range.contains(7)   // false
+range.contains(4)   // true
+range.contains(-1)  // true
+//print(range)
