@@ -140,3 +140,51 @@ var sortedArray: [Person] = arrayOfPerson.sorted { P1, P2 in
     P1.age < P2.age
 }
 print(sortedArray[0].age)  //adam
+
+
+
+
+
+//Optionals and Error Handling:
+//
+//Write a function that converts a string to an integer and handles possible conversion errors using optional binding.
+ 
+func convertStrToInt(str:String)->Any{
+    if let int = Int(str) {
+        return int
+    }else{
+        return "String cant be an intger"
+    }
+    
+}
+
+convertStrToInt(str: "333")
+
+
+
+
+//
+//Implement a custom error type and throw it in a function that performs a specific operation (e.g., dividing by zero).
+//
+enum error :Error {
+    case wrongEmail
+    case wrongPassword
+}
+func logIn(password:String , email:String)throws{
+    if email != "asmaa@gmail.com"{
+        throw error.wrongEmail
+    }
+    if password != "12345678"{
+        throw error.wrongPassword
+    }
+}
+do {
+    var result = try logIn(password: "12345678", email: "asmaa")
+}
+catch error.wrongEmail{
+    print("Wrong Email")
+}
+catch error.wrongPassword{
+    print("Wrong password")
+}
+
