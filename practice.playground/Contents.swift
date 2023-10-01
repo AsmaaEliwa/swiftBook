@@ -188,3 +188,63 @@ catch error.wrongPassword{
     print("Wrong password")
 }
 
+
+
+
+
+///function take a callback function
+func filterEven(arr: [Int] , callBack: ([Int])->([Int]))->[Int]{
+
+return callBack(arr)
+
+}
+func even(_ arr:[Int])->[Int]{
+var newArr = [Int]()
+for i in arr {
+    if i % 2 == 0{
+        newArr.append(i)
+    }
+}
+return newArr
+}
+filterEven(arr: [1,2,3,4,5,6] , callBack: even )
+
+
+
+
+
+//Closures and Higher-Order Functions:
+//
+//Create a function that takes an array of integers and a closure to filter out even numbers from the array.
+func findOdd(arr: [Int] , isOdd: (Int)-> Bool )-> [Int]{
+    var newArr = [Int]()
+    for i in arr {
+        if isOdd(i){
+            newArr.append(i)
+        }
+    }
+    return newArr
+}
+
+let evenFilter: (Int) -> Bool = { num in
+    if num % 2 != 0 {
+        return true
+    }
+    return false
+}
+findOdd(arr: [1,2,3,4,5], isOdd: evenFilter)
+//
+//Write a higher-order function that takes an array of strings and a closure to transform each string into uppercase.
+func toUperCase(str:String , uperCase: (Character)->(Character))->String{
+   var  newStr = ""
+    for i in str {
+        newStr.append(uperCase(i))
+    }
+    return newStr
+}
+
+let myClosure: (Character)->(Character) = { char in
+    return Character(char.uppercased())
+}
+
+toUperCase(str: "hello", uperCase: myClosure)
