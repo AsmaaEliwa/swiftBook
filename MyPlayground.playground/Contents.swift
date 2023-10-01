@@ -346,3 +346,57 @@ let printerSuccess = try? send(job: 1884, toPrinter: "Mergenthaler")
 
 ////////////////generic/////////////
 ///Writing <T: Equatable> is the same as writing <T> ... where T: Equatable.
+///
+///
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Basics///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Swift is a type-safe language, which means the language helps you to be clear about the types of values your code can work with.
+//Constants and variables
+//type annotation
+var welcomMessage: String
+welcomMessage = "hello"
+
+
+//string interpolation
+print("the welcom message is \(welcomMessage)")
+
+
+//semicolon
+let cat = "🐱"; print(cat)   // Prints "🐱"             if we want to put 2 line of code next to eachother
+
+//Intger
+let minValue = UInt8.min  // minValue is equal to 0, and is of type UInt8
+let maxValue = UInt8.max  // maxValue is equal to 255, and is of type UInt8
+
+//UInt
+//only when you specifically need an unsigned integer type with the same size as the platform’s native word size.
+//Double has a precision of at least 15 decimal digits, whereas the precision of Float can be as little as 6 decimal digits.
+//Type inference enables a compiler to deduce the type of a particular expression automatically when it compiles your code, simply by examining the values you provide.
+var num = 9  // the compiller will know that this is an Int type
+ //numeric literals
+let decimalInteger = 17
+let binaryInteger = 0b10001       // 17 in binary notation
+let octalInteger = 0o21           // 17 in octal notation
+let hexadecimalInteger = 0x11     // 17 in hexadecimal notation
+
+
+let pi = 1.34
+print(Int(pi))
+
+//let i = 1
+//if i {
+//    // this example will not compile, and will report an error
+//}
+
+//tuple
+let http200Status = (statusCode: 200, description: "OK")
+
+//optional
+let possibleNumber = "123"
+let convertedNumber = Int(possibleNumber)  // The type of convertedNumber is "optional Int" becaus it will might fail
+//Int?. An optional Int
+//Provide a fallback value, using the ?? operator.
+//Stop program execution, using the ! operator.
+
+//Optional binding can be used with if, guard, and while statements to check for a value inside an optional
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Basic Operators///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
