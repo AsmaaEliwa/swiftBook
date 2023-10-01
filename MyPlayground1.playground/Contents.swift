@@ -32,7 +32,7 @@ let newString = String(beginning)
 
 
 //hasPrefix("Act 1 ") //will check if any starts with this    // hasSuffix will check if it ends with it
-let array = ["Act 1 and i love it" , "hello Act 1", " im also an Act 1", "no im not one"]
+var array = ["Act 1 and i love it" , "hello Act 1", " im also an Act 1", "no im not one"]
 var count = 0
 var suffCount = 0
 for i in array {
@@ -47,3 +47,40 @@ for i in array {
     }
 }
 suffCount
+
+
+/////////////////////////////collection type///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var threeDoubles = Array(repeating: 0.0, count: 3) // threeDoubles is of type [Double], and equals [0.0, 0.0, 0.0]
+array[2...3]
+array.insert("String", at: 0)
+array.remove(at: array.count-1)
+
+
+//////////////////////////////////set//////////////////////////////
+var mySet = Set<Int>()
+var favoriteGenres: Set = ["Rock", "Classical", "Hip hop"]
+var odd: Set = [1,3,5,7,9]
+var even: Set = [2,4,6,8]
+var prim: Set =  [2,3,5,7]
+
+odd.union(even).sorted()
+odd.intersection(even)
+odd.subtracting(prim)
+odd.symmetricDifference(prim)
+
+
+////////////////////dictionary /////////////////////
+var namesOfIntegers: [Int: String] = [:]
+var airports: [String:String] = [:]
+for airportCode in airports.keys {
+    print("Airport code: \(airportCode)")
+}
+// Airport code: LHR
+// Airport code: YYZ
+
+
+for airportName in airports.values {
+    print("Airport name: \(airportName)")
+}
+// Airport name: London Heathrow
+// Airport name: Toronto Pearson
