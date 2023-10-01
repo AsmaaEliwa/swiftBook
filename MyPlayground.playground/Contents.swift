@@ -21,6 +21,9 @@ let widthLabel = label + String(width)    // Binary operator '+' cannot be appli
 //Experiment Use \() to include a floating-point calculation in a string and to include someone’s name in a greeting.           (string interpolation)
 let floatPoint : Float = 11.22
 print("the float point is \(floatPoint)")
+print(#"Write an interpolated string in Swift using \(multiplier)."#) // Prints "Write an interpolated string in Swift using \(multiplier)."
+print(#"6 times 7 is \#(6 * 7)."#)    // Prints "6 times 7 is 42."
+
 
 // we use the """ to add multible lines in btween """
 
@@ -449,3 +452,15 @@ range.contains(7)   // false
 range.contains(4)   // true
 range.contains(-1)  // true
 //print(range)
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////string and characters///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Swift’s String type is a value type
+
+var str = "are you here"
+var copy = str
+copy += "?"
+print (str)
+print(copy)
+
+
+
