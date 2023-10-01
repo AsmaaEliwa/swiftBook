@@ -96,7 +96,47 @@ print(rotate(arr: [1,2,3,4,5,6,7], k:3))
 
 
 
+//Classes and Objects:
+//
+//Create a class representing a simple bank account. Include methods to deposit and withdraw funds and check the account balance.
+//
+class Acount{
+    var username: String
+    var balnce: Int
+    init( username: String,balnce:Int){
+        self.username = username
+        self.balnce = balnce
+    }
+    func deposit(_ amount:Int){
+        self.balnce+=amount
+        print("your balance now is \(balnce)")
+    }
+}
+var myAcount = Acount(username: "asmaa Eliwa", balnce: 10000)
+myAcount.balnce
+myAcount.deposit(500)
 
 
 
+//Define a Person class with properties for name and age. Create an array of Person objects and sort them by age.
+//
 
+class Person{
+    var name:String
+    var age:Int
+    init(name:String,age:Int){
+        self.name = name
+        self.age = age
+    }
+    
+}
+var p1 = Person(name: "asmaa", age: 27)
+var p2 = Person(name: "saif", age: 30)
+var p3 = Person(name: "asif", age: 33)
+var p4 = Person(name: "adam", age: 3)
+
+var arrayOfPerson = [p1,p2,p3,p4]
+var sortedArray: [Person] = arrayOfPerson.sorted { P1, P2 in
+    P1.age < P2.age
+}
+print(sortedArray[0].age)  //adam
