@@ -248,3 +248,88 @@ let myClosure: (Character)->(Character) = { char in
 }
 
 toUperCase(str: "hello", uperCase: myClosure)
+
+
+
+
+
+
+
+
+//Protocol-Oriented Programming:
+//
+//Define a protocol called Shape with methods for calculating area and perimeter. Create classes that conform to this protocol, such as Circle and Rectangle.
+
+protocol Shape {
+    var perimeter: Double { get }
+    func area() -> Double
+}
+
+class Circle: Shape {
+    var radius: Double
+    
+    init(radius: Double) {
+        self.radius = radius
+    }
+    
+    var perimeter: Double {
+        return 2 * Double.pi * radius
+    }
+    
+    func area() -> Double {
+        return Double.pi * radius * radius
+    }
+}
+   
+
+
+
+
+
+
+//
+//Create a protocol for a simple todo list app with methods for adding, deleting, and listing tasks. Implement a class that conforms to this protocol.
+protocol toDoList{
+    var tasks: [String] {get set}
+    func addTask(task: String)
+       func deleteTask(num: Int)
+       func listenTask(num: Int)
+}
+
+class task: toDoList{
+    var tasks: [String]
+    init(tasks: [String]){
+        self.tasks = tasks
+    }
+    func addTask(task:String) {
+        tasks.append(task)
+        print("task \(task)added")
+    }
+    func deleteTask(num:Int){
+        tasks.remove(at: num-1)
+    }
+    func listenTask(num:Int){
+        print("the lisining task is \(tasks[num-1])")
+    }
+}
+
+enum errir:Error {
+    case wrongEmail
+    case wrongPassword
+}
+func logIn1(password: String , email: String)throws{
+    if password != "12345" {
+        throw error.wrongPassword
+    }
+    if email != "asmaa@gmail.com" {
+        throw error.wrongEmail
+    }
+    
+}
+do {
+    let result = try logIn1(password: "12345", email: "asmaa")
+}catch error.wrongEmail{
+    print("wron email")
+}catch error.wrongPassword{
+    print("wron password")
+}
