@@ -44,10 +44,21 @@ print (dic.keys)  // ["b", "a"]     not set not an array type
 print (dic.values)  // [2, 1]
 print( type(of: dic.keys ))   /////// Keys type  from Collection protocol
  
+
+/////////////////////////////////////tuples vs arrays /////////////////////////////
+let person: (String, Int, Bool) = ("Alice", 25, true)    //fixed number of elements and we have to define the type when creating
+let name = person.0 // Access elements by index
+let age = person.1
+let isActive = person.2
+
+
+
+
+
 ////////////control flow//////////////
 var scores = [22,33,44,5,56]
 let myScore = 60
-let score =  myScore > 50 ? "🎉" :""
+let score =  myScore > 50 ? "🎉" : ""
 
 //let scoreDecoration = if myScore > 10 {
 //    "🎉"
@@ -80,6 +91,16 @@ if let greeting1 = optionalValue1 {
 //we can also use the ?? to assign a default value if its nill
 var optionalValue2: String?
 print (optionalValue2 ?? "im a default value")
+//Forced Unwrapping with !:
+let unwrappedValue = optionalValue!
+//Optional Chaining:
+let result = optionalInstance?.propertyOrMethod()
+//Implicitly Unwrapped Optionals:
+var implicitlyUnwrappedOptional: SomeType!
+let value = implicitlyUnwrappedOptional // Automatically unwrapped
+//try? for Error Handling:
+let result = try? someThrowingFunction()
+
 
 
 
@@ -128,7 +149,7 @@ repeat{            ///////will print at least once
 var x = 0
 for i in 0..<6{
     x+=1
-    print(i)         //  1 2 3 4 5
+    print(i)         // 0 1 2 3 4 5
 }
 print(x)   // 6
 
@@ -201,7 +222,7 @@ print(mapNums)    //return 0 for odd numbers
 let mappedNumbers = numbers.map({ number in 3 * number })   //  we could also do it like this
 let sortedNumbers = numbers.sorted(){$0 > $1}   //{ $0 > $1 }: This is a closure expression that specifies the sorting order. In this case, it's used to sort the numbers in descending order. Here's what this closure does:$0 and $1 are shorthand argument names for the two elements being compared during the sorting process.
 print(sortedNumbers)    ///[4, 3, 2, 1]
-
+//let num = numbers.map({n in 3 * n })
 
 //////////////////////////////class/////////////////////////////////
 class Shape{
@@ -402,7 +423,7 @@ let convertedNumber = Int(possibleNumber)  // The type of convertedNumber is "op
 
 //Optional binding can be used with if, guard, and while statements to check for a value inside an optional
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Basic Operators///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Basic Operators/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //asign operator
 let (z, y) = (1, 2)   //tuple type
 // z is equal to 1, and y is equal to 2
